@@ -11,8 +11,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    container:
-        image: arm64v8/debian
     steps:
     - uses: actions/checkout@v3
     - name: Login to DockerHub
@@ -20,5 +18,15 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag pytorch-modelzoo:$(date +%s)
+    - name: Build and push
+      id: docker_build
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        # 生成多平台镜像, see https://github.com/docker-library/bashbrew/blob/v0.1.1/architecture/oci-platform.go
+        platforms: |
+          linux/amd64
+          linux/arm64/v8
+        tags: |
+          pytorch-modelzoo:latest
+          pytorch-modelzoo:$(date +%s)
