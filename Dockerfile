@@ -1,4 +1,4 @@
-FROM ascendhub.huawei.com/public-ascendhub/pytorch-modelzoo:23.0.RC2-1.8.1
+FROM xiaoql/pytorch-modelzoo:23.0.RC2-1.8.1
 RUN pip install --no-cache-dir notebook -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 EXPOSE 8888
