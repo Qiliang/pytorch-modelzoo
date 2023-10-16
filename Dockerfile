@@ -10,3 +10,5 @@ RUN default_user=$(getent passwd 1000 | awk -F ':' '{print $1}') || echo "uid: 1
     fi && \
     groupadd -g 100 ma-group && useradd -d /home/ma-user -m -u 1000 -g 100 -s /bin/bash ma-user && \
     chmod -R 750 /home/ma-user
+    
+USER ma-user
