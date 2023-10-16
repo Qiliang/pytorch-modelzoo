@@ -31,5 +31,5 @@ jobs:
           linux/amd64
           linux/arm64/v8
         tags: |
-          pytorch-modelzoo:latest
-          pytorch-modelzoo:23.0.RC2-1.8.1-notebook
+          xiaoql/pytorch-modelzoo:latest
+          xiaoql/pytorch-modelzoo:23.0.RC2-1.8.1-notebook
