@@ -39,4 +39,4 @@ jobs:
           linux/arm64/v8
         tags: |
           xiaoql/pytorch-modelzoo:latest
-          xiaoql/pytorch-modelzoo:23.0.RC2-1.8.1-${{TS}}
+          xiaoql/pytorch-modelzoo:23.0.RC2-1.8.1-${{ steps.time.outputs.time }}
