@@ -12,6 +12,12 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
+    - name: Get Time
+      id: time
+      uses: nanzm/get-time-action@master
+      with:
+        timeZone: UTC+8
+        format: 'YYYYMMDDHHmmss'
     - uses: actions/checkout@v3
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
@@ -25,11 +31,12 @@ jobs:
     - name: Build and push
       id: docker_build
       uses: docker/build-push-action@v2
+      env:
+        TS: "${{ steps.time.outputs.time }}"
       with:
         push: true
         platforms: |
-          linux/amd64
           linux/arm64/v8
         tags: |
           xiaoql/pytorch-modelzoo:latest
-          xiaoql/pytorch-modelzoo:23.0.RC2-1.8.1-notebook
+          xiaoql/pytorch-modelzoo:23.0.RC2-1.8.1-$TS
