@@ -32,13 +32,15 @@ WORKDIR /home/ma-user
 
 # 拷贝待安装文件到基础容器镜像中的 /tmp 目录
 # COPY --chown=ma-user:100 Miniconda3-py37_4.10.3-Linux-aarch64.sh /tmp
-RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py39_23.5.2-0-Linux-aarch64.sh -O /tmp/Miniconda3-py39_23.5.2-0-Linux-aarch64.sh && \
-chown ma-user:100 /tmp/Miniconda3-py39_23.5.2-0-Linux-aarch64.sh
-
+# RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py39_23.5.2-0-Linux-aarch64.sh -O /tmp/Miniconda3-py39_23.5.2-0-Linux-aarch64.sh && \
+# chown ma-user:100 /tmp/Miniconda3-py39_23.5.2-0-Linux-aarch64.sh
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py37_23.1.0-1-Linux-aarch64.sh -O /tmp/Miniconda3-py37_23.1.0-1-Linux-aarch64.sh && \
+chown ma-user:100 /tmp/Miniconda3-py37_23.1.0-1-Linux-aarch64.sh
 
 # https://conda.io/projects/conda/en/latest/user-guide/install/linux.html#installing-on-linux
 # 安装 Miniconda3 到基础容器镜像的 /home/ma-user/miniconda3 目录中
-RUN bash /tmp/Miniconda3-py39_23.5.2-0-Linux-aarch64.sh -b -p /home/ma-user/miniconda3
+# RUN bash /tmp/Miniconda3-py39_23.5.2-0-Linux-aarch64.sh -b -p /home/ma-user/miniconda3
+RUN bash /tmp/Miniconda3-py37_23.1.0-1-Linux-aarch64.sh -b -p /home/ma-user/miniconda3
 
 ENV PATH=$PATH:/home/ma-user/miniconda3/bin
 
