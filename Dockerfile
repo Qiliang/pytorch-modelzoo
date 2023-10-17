@@ -5,9 +5,8 @@ FROM arm64v8/ubuntu:18.04 AS builder
 # USER root
 
 # 安装 OS 依赖（使用华为开源镜像站）
-# COPY Ubuntu-Ports-bionic.list /tmp
-RUN wget -O /tmp/sources.list https://repo.huaweicloud.com/repository/conf/Ubuntu-Ports-bionic.list && \
-    cp -a /etc/apt/sources.list /etc/apt/sources.list.bak && \
+COPY Ubuntu-Ports-bionic.list /tmp
+RUN cp -a /etc/apt/sources.list /etc/apt/sources.list.bak && \
     mv /tmp/Ubuntu-Ports-bionic.list /etc/apt/sources.list && \
     echo > /etc/apt/apt.conf.d/00skip-verify-peer.conf "Acquire { https::Verify-Peer false }" && \
     apt-get update && \
@@ -66,9 +65,8 @@ RUN wget https://gitee.com/ascend/pytorch/releases/download/v5.0.rc2.2-pytorch1.
 FROM arm64v8/ubuntu:18.04
 
 # 安装 OS 依赖（使用华为开源镜像站）
-# COPY Ubuntu-Ports-bionic.list /tmp
-RUN wget -O /tmp/sources.list https://repo.huaweicloud.com/repository/conf/Ubuntu-Ports-bionic.list && \
-    cp -a /etc/apt/sources.list /etc/apt/sources.list.bak && \
+COPY Ubuntu-Ports-bionic.list /tmp
+RUN cp -a /etc/apt/sources.list /etc/apt/sources.list.bak && \
     mv /tmp/Ubuntu-Ports-bionic.list /etc/apt/sources.list && \
     echo > /etc/apt/apt.conf.d/00skip-verify-peer.conf "Acquire { https::Verify-Peer false }" && \
     apt-get update && \
