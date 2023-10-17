@@ -27,8 +27,8 @@ USER ma-user
 WORKDIR /home/ma-user
 
 # 使用华为开源镜像站提供的 pypi 配置
-RUN mkdir -p /home/ma-user/.pip/
-COPY --chown=ma-user:100 pip.conf /home/ma-user/.pip/pip.conf
+# RUN mkdir -p /home/ma-user/.pip/
+# COPY --chown=ma-user:100 pip.conf /home/ma-user/.pip/pip.conf
 
 # 拷贝待安装文件到基础容器镜像中的 /tmp 目录
 # COPY --chown=ma-user:100 Miniconda3-py37_4.10.3-Linux-aarch64.sh /tmp
