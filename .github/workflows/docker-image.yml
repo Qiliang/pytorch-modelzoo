@@ -39,4 +39,4 @@ jobs:
           linux/arm64/v8
         tags: |
           xiaoql/pytorch-modelzoo:latest
-          xiaoql/pytorch-modelzoo:23.0.RC2-1.8.1-${{ steps.time.outputs.time }}
+          xiaoql/mindspore_2_0_0:cann6.3rc1-py-mindformers-euler-${{ steps.time.outputs.time }}
